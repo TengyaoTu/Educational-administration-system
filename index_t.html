@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>导航</title>
+
+<link href="../../../css/navigation.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../../../js/jquery.min.js"></script>
+
+</head>
+<body>
+<div style="position:absolute;height: 100%;">
+<div class="lvc-wrap" id="lvc-nav">
+  <ul class="lvc-nav">
+    
+    <li class="nav-pic2" title="首页" id="top"><a>首页</a></li>
+    <li class="nav-pic3" title="已有课程" id="select"><a>已有课程</a></li>
+    <li class="nav-pic4" title="开设新课" id="course"><a>开设新课</a></li>
+    <li class="nav-pic6" title="学生成绩管理" id="score"><a>学生成绩管理</a></li>
+    <li class="nav-pic5" title="校历查询" id="back"><a href="../../../navigation_t.html">返回</a></li>
+  </ul>
+  <button type="button" class="btn-nav"></button>
+</div>
+<div class="content-left-all"><iframe src="index.jsp" frameborder="0" class="content-left-next-begin" id="frame"></iframe></div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    //展开收起
+    $(".btn-nav").click(function () {
+      $(".lvc-wrap").toggleClass("lvc-close")
+      $("ol").toggleClass("small-ol")
+      $(".next-layer ol").hide()
+	  $(".content-left-all").toggleClass("content-left-all-next")
+	  $(".content-left-next-begin").toggleClass("content-left-next-next")
+
+      if($("#lvc-nav").hasClass('lvc-close')){
+        $(".next-layer ").removeClass("arrow")
+      }
+    })
+
+    //选中状态
+    $(".lvc-nav li").click(function () {
+      $(this).siblings().find('ol').hide()
+      $(this).addClass("active").siblings().removeClass("active")
+	  var id = $(this).attr("id")
+	  if(id == "top"){
+		$("#frame").attr("src", "top.jsp")
+	  }
+	  else if(id == "info"){
+	  	$("#frame").attr("src", "info.html")
+	  }
+	  else if(id == "select"){
+	  	$("#frame").attr("src", "course.jsp")
+	  }
+	   else if(id == "score"){
+	  	$("#frame").attr("src", "score.jsp")
+	  }
+	  else if(id == "course"){
+	  	$("#frame").attr("src", "addcourse.html")
+	  }
+	  else if(id == "back"){
+	  	$("#frame").attr("src", "")
+	  }
+	  else if(id == "c_information"){
+	  	$("#frame").attr("src", "")
+	  }
+		
+    })
+
+    //选中子集清除父级active
+    $("ol>li").click(function (e) {
+      console.log('ol>li clicked')
+      e.stopPropagation()
+     $(this).parent().parent().removeClass("active")
+    })
+
+
+
+
+     $("ol li").click(function () {
+       if($("ol").hasClass('small-ol')) {
+         $(".small-ol").hide();
+         $(this).parent().parent().addClass("active")
+       }
+     })
+})
+</script>
+</body>
+</html>

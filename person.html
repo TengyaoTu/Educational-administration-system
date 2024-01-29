@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>个人信息</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+
+		</script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+		<!-- vue.js -->
+		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+		<!-- vue的ajax -->
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<style type="text/css">
+			/* body {
+				background-image: url(./img/ChMkJ1bKwvKIZ9JKAAUUMx6qG6sAALGvgEB8RsABRRL201.jpg);
+				background-position: center;
+				background-repeat: repeat-y；
+			} */
+			#biao {
+				
+			}
+
+			#tabel {
+				font-family: "黑体";
+				font-size: 20px;
+				text-decoration-color: aliceblue;
+
+			}
+			#wai{ 
+				width:400px; 
+				border:2px solid #900; 
+				padding:10px; 
+				overflow:hidden;
+				border: 1px black solid;
+				width: 45%;
+				margin: auto auto;
+				/* border-radius: 20px; */
+				box-shadow: 5px 5px 5px #aaa;
+				border-radius: 5%;
+				background-color: rgba(255,255,255,0.7);
+				}
+			.divleft{ float:left; width:100px; height:100px }
+			.divright{ float:right; width:280px; border:1px solid #00F}
+
+			html,
+			body {
+
+				width: 100%;
+
+				height: 100%
+			}
+			.div1 {
+			        float:left;
+					margin-top: 120px;
+					width:150px; 
+					height:150px ;
+					border-radius:50%;
+			    }
+			    .div1 img  {
+			        max-width: 100%;
+			        max-height: 100%;
+			        display: block;
+			        margin: auto;
+			    }
+
+			body {
+				/* background-image: url(./images/img-6.jpg); */
+				background-repeat: no-repeat;
+				/* background-size: 100%; */
+				background-attachment: fixed;
+				background-size: 100% 100%;
+				/* 透明度 */
+				/* filter: opacity(0.3); */
+			}
+		</style>
+
+	</head>
+	<body background="./img/back4.jpg" style=" background-repeat:no-repeat ;
+        background-size:100% 100%;     background-attachment: fixed;">
+
+		
+
+		<div id="app">
+			<!-- <h3 align="center">个人信息</h3> -->
+			<img src="./img/重大校徽.png" alt="图片" width="200">
+
+
+			<!-- <form> -->
+			<div style="left: 10px;" id="wai">
+				<table id="tabel" cellspacing="0" cellpadding="6" style="color: black;">
+					<!-- <div class="div1"> -->
+					<p style="text-align: center; width: 35%" class="divleft">
+						
+							<img src="./img/20204144.png" alt="图片" width="100" class="div1" id="img01" >
+							
+						
+						
+						</p>
+					<!-- </div> -->
+					<form class="divright">
+						<tr>
+							<td>姓名:</td>
+							<td>{{name}}</td>
+						</tr>
+						<tr>
+							<td>班级:</td>
+							<td>{{classes}}</td>
+						</tr>
+						<tr>
+							<td>性别:</td>
+							<td>{{sexes}}</td>
+						</tr>
+						<tr>
+							<td>学号:</td>
+							<td>{{id}}</td>
+						</tr>
+						
+						<tr>
+							<td>省市:</td>
+							<td> {{area}}</td>
+						</tr>
+						<tr>
+							<td>专业:</td>
+							<td>{{profession}}</td>
+						</tr>
+						<tr>
+							<td>爱好:</td>
+							<td> {{like}}</td>
+						</tr>
+						
+						<tr>
+							<td>返渝方式:</td>
+							<td>{{commute}}</td>
+						</tr>
+						<tr>
+							<td>统一身份认证号:</td>
+							<td> {{uniaccount}}</td>
+						</tr>
+						
+					</form>
+
+				</table>
+			</div>
+			
+			<!-- </form> -->
+			<br>
+			<div style="text-align:center">
+				<a href="information/index.jsp"><button type="submit" class="btn btn-primary mt-3"
+						style="text-align: center;" id="btn_01">进入可视化界面</button></a>
+
+			</div>
+		</div>
+		<br>
+		<br>
+		<br>
+		<footer>
+			<p class="text-center text-muted p-3" style="color: white;">Copyright © 2022第四组</p>
+		</footer>
+
+		<script>
+			var v_view = new Vue({
+				el: '#app',
+				data() {
+					return {
+
+						name: "老图腾",
+			 			classes: "13",
+						sexes: "男",
+						id: "20204143",
+						profession: "电气信息类",
+						like: "篮球",
+						area: "重庆",
+						uniaccount:"07101010",
+						commute:"私家车",
+						
+						
+						info: null
+					}
+				},
+				mounted() {
+					axios
+						.get('show_student')
+						.then(function(response) { // 请求失败处理
+							console.log(response.data);
+							v_view.id = response.data[0].id;
+							v_view.name = response.data[0].name;
+							v_view.sexes = response.data[0].sex;
+							v_view.profession = response.data[0].colleges;
+							v_view.like = response.data[0].interest;
+							v_view.area = response.data[0].area;
+							v_view.classes = response.data[0].classes;
+							v_view.commute = response.data[0].commute;
+							v_view.uniaccount = response.data[0].uniaccount;
+							
+							if (response.data[0].icon != "") {
+								console.log(response.data[0].icon);
+								
+								img_change.src = response.data[0].icon;
+
+							}
+						})
+						.catch(function(error) { // 请求失败处理
+							console.log(error);
+						});
+				}
+			})
+		</script>
+		<script type="text/javascript">
+			img_change = document.getElementById("img01");
+		</script>
+	</body>
+</html>

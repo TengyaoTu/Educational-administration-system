@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>登录</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel='stylesheet' href='./css/bootstrap.min.css'>
+		<link rel="stylesheet" href="./css/style.css">
+		<style>
+			body {
+				background: url("C:\Users\DELL\Desktop\img\重大虎溪.jpg") no-repeat;
+				background-size: cover;
+				font-size: 15px;
+			}
+		</style>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+	</head>
+	<body>
+		<!-- partial:index.partial.html -->
+
+		<div class="main-bg" >
+			<div class="box-conatiner">
+				<div id="a">
+					<div class="circle-ripple"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<h1 class="heading-left">重庆大学<br>登录系统</h1>
+
+					</div>
+					<div class="col-sm-6 col-md-6">
+						<div class="wrap-login100">
+							<span class="login100-form-title">
+								登录
+							</span>
+							<form class="login100-form validate-form p-l-55 p-r-55 p-t-20" action="login">
+								<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+									<input class="input100" type="text" name="uniaccount" placeholder="用户名">
+									<span class="focus-input100"></span>
+								</div>
+								<div class="wrap-input100 validate-input" data-validate="Please enter password">
+									<input class="input100" type="password" name="unipassword" placeholder="密码">
+									<span class="focus-input100"></span>
+								</div>
+								<br>
+								<br>
+								<div class="container-login100-form-btn">
+									<button class="login100-form-btn">
+										<a style='color:white'>登录</a>
+									</button>
+								</div>
+								<div class="flex-col-c p-t-140 p-b-40">
+									<nobr>
+									<a href="register.html" class="txt3">
+										学生注册
+									</a>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="register_t.html" class="txt3">
+										教师注册
+									</a>
+									</nobr>
+								</div>
+							
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- partial -->
+		<div class="container mt-3">
+			
+				<div class="radio-line" name="operator">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" class="form-check-input" id="radio1" name="operator" value="student" checked>
+					<label class="form-check-label" for="radio2" >学生</label>
+				    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" class="form-check-input" id="radio2" name="operator" value="teacher" checked>
+					<label class="form-check-label" for="radio2" >教师</label>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" class="form-check-input" id="radio3" name="operator" value="admin" checked>
+					<label class="form-check-label" for="radio3">管理员</label>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

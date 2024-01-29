@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinasoft.mapper.StudentMapper">
+  		<insert id="addStudent" parameterType="com.chinasoft.pojo.Student">
+  			insert into student(id,name,sex,area,living,commute,nickname,interest,icon,classes,uniaccount,unipassword,colleges,timer,welcomed)
+						values (#{id},#{name},#{sex},#{area},#{living},#{commute},#{nickname},#{interest},#{icon},#{classes},#{uniaccount},#{unipassword},#{colleges},now(),#{welcomed});
+            
+  		</insert>
+  		<insert id="addTeacher" parameterType="com.chinasoft.pojo.Teacher">
+  			 
+  			insert into teacher(t_id,t_name,t_password,t_sex,t_major)
+						values (#{t_id},#{t_name},#{t_password},#{t_sex},#{t_major});
+            
+  		</insert>
+  		<insert id="addCourse" parameterType="com.chinasoft.pojo.Course">
+  			 
+  			insert into course(c_id,c_name,c_room,c_time,c_point,t_id)
+						values (#{c_id},#{c_name},#{c_room},#{c_time},#{c_point},#{t_id});
+  		</insert>
+  		<select id="findAllCourse" resultType="com.chinasoft.pojo.Course">
+  			select * from course where t_id=#{t_id};
+  		</select>
+  		<select id="studentfindAllCourse" resultType="com.chinasoft.pojo.Course">
+  			select * from course;
+  		</select>
+  		<insert id="addSelect" parameterType="com.chinasoft.pojo.Select">
+  			 
+  			insert into selects(s_id,c_id,s_point,t_id)
+						values (#{s_id},#{c_id},#{s_point},#{t_id});
+         </insert>  
+  		<insert id="deleteCourse" parameterType="com.chinasoft.pojo.Course">
+  			delete from course where c_id=#{c_id}; 
+  						
+  		</insert>
+  		<insert id="deleteSelect" parameterType="com.chinasoft.pojo.Select">
+  			delete from selects where c_id=#{c_id}; 
+  						
+  		</insert>
+  		<select id="findAllSelect" resultType="com.chinasoft.pojo.Select">
+  			select * from selects where s_id=#{s_id};
+  		</select>
+  		<select id="teacherfindAllSelect" resultType="com.chinasoft.pojo.Select">
+  			select * from selects where t_id=#{t_id}
+  			
+  		</select>
+  		<select id="findAllStudent" resultType="com.chinasoft.pojo.Student">
+  			select * from student;
+  		</select>
+  		<select id="findMyself" resultType="com.chinasoft.pojo.Student">
+  			select * from student where id=#{id};
+  		</select>
+  		<select id="login" resultType="com.chinasoft.pojo.Student">
+  			select * from student where uniaccount=#{uniaccount} and unipassword=#{unipassword};
+  		</select>
+  		<select id="admin_login" resultType="com.chinasoft.pojo.Admin">
+  			select * from admin where uniaccount=#{uniaccount} and unipassword=#{unipassword};
+  		</select>
+  		<select id="teacher_login" resultType="com.chinasoft.pojo.Teacher">
+  			select * from teacher where t_id=#{t_id} and t_password=#{t_password};
+  		</select>
+  		<insert id="deleteStudent" parameterType="com.chinasoft.pojo.Student">
+  			delete from student where id=#{id};  			
+  		</insert>
+  		<!--我需要两个参数 Student  -->
+  		<insert id="changeIcon" parameterType="com.chinasoft.pojo.Student">
+  			UPDATE `my_firstdatabase`.`student` SET `icon` =#{icon} WHERE (`id` = #{id});
+  		</insert>
+  		<insert id="change01" parameterType="com.chinasoft.pojo.Student" >
+  			
+  			UPDATE `my_firstdatabase`.`student` SET `name` =#{name},`sex` =#{sex},`area` =#{area},`uniaccount` =#{uniaccount},`colleges` =#{colleges} WHERE (`id` = #{id});
+  		</insert>
+  		
+  		<insert id="changeunipassword" parameterType="com.chinasoft.pojo.Student" >
+  			
+  			UPDATE `my_firstdatabase`.`student` SET `unipassword` =#{unipassword} WHERE (`id` = #{id});
+  		</insert>
+  		
+  		
+  		
+  		<insert id="updateScore" parameterType="com.chinasoft.pojo.Select" >
+  			
+  			UPDATE `my_firstdatabase`.`selects` SET `s_point` =#{s_point}WHERE `s_id` = #{s_id};
+  		</insert>
+  		<select id="findCourseById" resultType="com.chinasoft.pojo.Course">
+  			select * from course where c_id=#{c_id};
+  		</select>
+  		<select id="StudentfindCourse" resultType="com.chinasoft.pojo.Select">
+  			select * from selects where s_id=#{id};
+  		</select>
+  		
+  		
+</mapper>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>导航</title>
+
+<link href="css/navigation.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+
+</head>
+<body>
+<div style="position:absolute;height: 100%;">
+<div class="lvc-wrap" id="lvc-nav">
+  <ul class="lvc-nav">
+    
+    <li class="nav-pic2" title="查看公告" id="view"><a>查看公告</a></li>
+	<li class="nav-pic1" title="个人信息" id="personal_details"><a>个人信息</a></li>
+    <li class="nav-pic3" title="校车时刻" id="bus_time"><a>校车时刻</a></li>
+    <li class="nav-pic4" title="校园地图" id="campus_map"><a>校园地图</a></li>
+    <li class="nav-pic5" title="校历查询" id="class_time"><a>校历查询</a></li>
+    <li class="nav-pic7 next-layer" title="修改信息">
+    	<a>修改信息</a>
+        <ol>
+        	<li id="c_information">修改密码</li>
+            <li id="c_image">修改头像</li>
+        </ol>
+    </li>
+    <!--<li class="nav-pic6" title="修改密码" id="c_information"><a>修改密码</a></li>
+    <li class="nav-pic7" title="修改头像" id="c_image"><a>修改头像</a></li>-->
+    <li class="nav-pic11" title="选课系统(学生入口)"><a href="resources/templates/student/index_s.html">选课系统(学生入口)</a></li>
+<!--    <li class="nav-pic7" title="报表统计">
+    	<a>报表统计</a>
+    </li>
+    <li class="nav-pic8" title="日志管理"><a>日志管理</a></li>
+    <li class="nav-pic9" title="系统管理"><a>系统管理</a></li>
+    <li class="nav-pic10" title="订单管理"><a>订单管理</a></li>
+    <li class="nav-pic11" title="我的课堂"><a>我的课堂</a></li>
+    <li class="nav-pic12" title="个人中心"><a>个人中心</a></li> -->
+	
+  </ul>
+  <button type="button" class="btn-nav"></button>
+</div>
+<div class="content-left-all"><iframe src="welcome.html" frameborder="0" class="content-left-next-begin" id="frame"></iframe></div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    //展开收起
+    $(".btn-nav").click(function () {
+      $(".lvc-wrap").toggleClass("lvc-close")
+      $("ol").toggleClass("small-ol")
+      $(".next-layer ol").hide()
+	  $(".content-left-all").toggleClass("content-left-all-next")
+	  $(".content-left-next-begin").toggleClass("content-left-next-next")
+
+      if($("#lvc-nav").hasClass('lvc-close')){
+        $(".next-layer ").removeClass("arrow")
+      }
+    })
+
+    //选中状态
+    $(".lvc-nav li").click(function () {
+      $(this).siblings().find('ol').hide()
+      $(this).addClass("active").siblings().removeClass("active")
+	  var id = $(this).attr("id")
+	  if(id == "view"){
+		$("#frame").attr("src", "")
+	  }
+	  else if(id == "personal_details"){
+	  	$("#frame").attr("src", "person.html")
+	  }
+	  else if(id == "bus_time"){
+	  	$("#frame").attr("src", "car.html")
+	  }
+	  else if(id == "campus_map"){
+	  	$("#frame").attr("src", "map.html")
+	  }
+	  else if(id == "class_time"){
+	  	$("#frame").attr("src", "calendar.html")
+	  }
+	  else if(id == "c_information"){
+	  	$("#frame").attr("src", "changeInfo.jsp")
+	  }
+	  else if(id == "c_image"){
+	  	$("#frame").attr("src", "c_head.jsp")
+	  }
+		
+    })
+
+    //选中子集清除父级active
+    $("ol>li").click(function (e) {
+      console.log('ol>li clicked')
+      e.stopPropagation()
+     $(this).parent().parent().removeClass("active")
+    })
+
+
+
+
+     $("ol li").click(function () {
+       if($("ol").hasClass('small-ol')) {
+         $(".small-ol").hide();
+         $(this).parent().parent().addClass("active")
+       }
+     })
+     
+     //二级导航展开收起
+    $(".next-layer").click(function () {
+      $(this).children("ol").toggle();
+      $(this).toggleClass("arrow").siblings().removeClass("arrow")
+    })
+
+
+     $("ol li").click(function () {
+       if($("ol").hasClass('small-ol')) {
+         $(".small-ol").hide();
+         $(this).parent().parent().addClass("active")
+       }
+     })
+     
+})
+</script>
+</body>
+</html>

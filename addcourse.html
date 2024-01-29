@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+		<title>Bootstrap5 实例</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+		</script>
+		<script type="text/javascript" src="./js/gong.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+		<style>
+
+		</style>
+</head>
+<body>
+    <form action="../../../register_course" class="needs-validation" novalidate>
+        <div class="mb-3 mt-3 form-group">
+            <label for="username" class="form-label">课程编号</label>
+            <input type="text" class="form-control" id="c_id" placeholder="请输入课程编号" name="c_id" required>
+
+            <div class="invalid-feedback">如：S005</div>
+        </div>
+        <div class="mb-3 mt-3 form-group">
+            <label for="username" class="form-label">课程名称</label>
+            <input type="text" class="form-control" id="c_name" placeholder="请输入课程名称" name="c_name" required>
+
+            <div class="invalid-feedback">如：计算机导论</div>
+        </div>
+        <div class="mb-3 mt-3 form-group">
+            <label for="username" class="form-label">行课教室</label>
+            <input type="text" class="form-control" id="c_room" placeholder="请输入行课教室" name="c_room" required>
+
+            <div class="invalid-feedback">如：D1314</div>
+        </div>
+        <div class="mb-3 mt-3 form-group">
+            <label for="username" class="form-label">行课时间</label>
+            <input type="text" class="form-control" id="c_time" placeholder="请输入行课时间" name="c_time" required>
+
+            <div class="invalid-feedback">如：周一第一节第二节</div>
+        </div>
+        <div class="mb-3 mt-3 form-group">
+            <label for="username" class="form-label">所含学分</label>
+            <input type="text" class="form-control" id="c_point" placeholder="请输入所含学分" name="c_point" required>
+
+            <div class="invalid-feedback">如：1，2，3</div>
+        </div>
+        <div style="text-align:center">
+            <button type="submit" class="btn btn-primary mt-3" style="text-align: center;"
+                id="btn_register">提交</button>
+        </div>
+
+    </form>
+</body>
+</html>
